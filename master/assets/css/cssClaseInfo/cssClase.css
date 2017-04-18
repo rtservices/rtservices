@@ -1,0 +1,24 @@
+.colorVerde()
+{
+	background-color: rgba(0, 107, 0, 1);
+	background: rgba(0, 107, 0, 1);
+	color: rgba(0, 107, 0, 1);
+}
+.colorRojo()
+{
+	background-color: rgba(129, 0, 0, 1);
+	background: rgba(129, 0, 0, 1);
+	color: rgba(129, 0, 0, 1);
+}
+.colorAzul()
+{
+	background-color: rgba(0, 0, 255, 1);
+	background: rgba(0, 0, 255, 1);
+	color: rgba(0, 0, 255, 1);
+}
+.colorNaranja()
+{
+	background-color: rgba(166, 107, 0, 1);
+	background: rgba(166, 107, 0, 1);
+	color: rgba(166, 107, 0, 1);
+}
