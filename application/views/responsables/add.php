@@ -1,0 +1,1 @@
+<script type="text/javascript" src="ajax/ajxResponsable.js"></script>
