@@ -34,10 +34,10 @@ class CI_Email {
 	var	$protocol		= "smtp";				// mail/sendmail/smtp
 	var	$smtp_host		= 'mx1.hostinger.com';			// SMTP Server.  Example: mail.earthlink.net
 	var	$smtp_user		= "administracion@rtservices.xyz";	// SMTP Username
-	var	$smtp_pass		= "Rtsapp";			// SMTP Password
+	var	$smtp_pass		= "Rtsapp2017";			// SMTP Password
 	var	$smtp_port		= "2525";	// SMTP Port
-	var	$smtp_timeout	= 10;			// SMTP Timeout in seconds
-	var	$smtp_crypto	= "";			// SMTP Encryption. Can be null, tls or ssl.
+	var	$smtp_timeout		= 5;		// SMTP Timeout in seconds
+	var	$smtp_crypto		= "";		// SMTP Encryption. Can be null, tls or ssl.
 	var	$wordwrap		= TRUE;	// TRUE/FALSE  Turns word-wrap on/off
 	var	$wrapchars		= "76";		// Number of characters to wrap at.
 	var	$mailtype		= "html";	// text/html  Defines email formatting
