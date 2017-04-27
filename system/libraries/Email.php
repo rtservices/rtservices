@@ -30,24 +30,24 @@
 class CI_Email {
 
 	var	$useragent		= "CodeIgniter";
-	var	$mailpath		= "/usr/sbin/sendmail";	// Sendmail path
-	var	$protocol		= "smtp";	// mail/sendmail/smtp
-	var	$smtp_host		= 'smtp.gmail.com';		// SMTP Server.  Example: mail.earthlink.net
-	var	$smtp_user		= "rackettenisservices@gmail.com";	// SMTP Username
-	var	$smtp_pass		= "Rtsapp2017";		// SMTP Password
-	var	$smtp_port		= "465";	// SMTP Port
-	var	$smtp_timeout	= 5;		// SMTP Timeout in seconds
-	var	$smtp_crypto	= "";		// SMTP Encryption. Can be null, tls or ssl.
-	var	$wordwrap		= TRUE;		// TRUE/FALSE  Turns word-wrap on/off
+	var	$mailpath		= "/usr/sbin/sendmail";			// Sendmail path
+	var	$protocol		= "smtp";				// mail/sendmail/smtp
+	var	$smtp_host		= 'mx1.hostinger.com';			// SMTP Server.  Example: mail.earthlink.net
+	var	$smtp_user		= "administracion@rtservices.xyz";	// SMTP Username
+	var	$smtp_pass		= "Rtsapp";			// SMTP Password
+	var	$smtp_port		= "2525";	// SMTP Port
+	var	$smtp_timeout	= 10;			// SMTP Timeout in seconds
+	var	$smtp_crypto	= "";			// SMTP Encryption. Can be null, tls or ssl.
+	var	$wordwrap		= TRUE;	// TRUE/FALSE  Turns word-wrap on/off
 	var	$wrapchars		= "76";		// Number of characters to wrap at.
 	var	$mailtype		= "html";	// text/html  Defines email formatting
 	var	$charset		= "utf-8";	// Default char set: iso-8859-1 or us-ascii
 	var	$multipart		= "mixed";	// "mixed" (in the body) or "related" (separate)
-	var $alt_message	= '';		// Alternative message for HTML emails
+	var 	$alt_message		= '';		// Alternative message for HTML emails
 	var	$validate		= FALSE;	// TRUE/FALSE.  Enables email validation
 	var	$priority		= "5";		// Default priority (1 - 5)
 	var	$newline		= "\r\n";		// Default newline. "\r\n" or "\n" (Use "\r\n" to comply with RFC 822)
-	var $crlf			= "\n";		// The RFC 2045 compliant CRLF for quoted-printable is "\r\n".  Apparently some servers,
+	var 	$crlf			= "\n";		// The RFC 2045 compliant CRLF for quoted-printable is "\r\n".  Apparently some servers,
 									// even on the receiving end think they need to muck with CRLFs, so using "\n", while
 									// distasteful, is the only thing that seems to work for all environments.
 	var $send_multipart	= TRUE;		// TRUE/FALSE - Yahoo does not like multipart alternative, so this is an override.  Set to FALSE for Yahoo.
