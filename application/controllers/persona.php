@@ -101,6 +101,7 @@ class Persona extends CI_Controller {
 						$edit = '<a class="btn btn-primary btn-expand" style="color: white; background-color: #2A2A2A;" title="Debes tener activo a '.$persona->Nombre.' para poder editarlo." disabled="true"><i class="fa fa-pencil"></i></a>';
 						$cuenta = '<a class="btn btn-inverse btn-expand" disabled title="Debes tener activo a  '.$persona->Nombre.' '.$persona->Apellidos.' para poder gestionar su cuenta."><i class="fa fa-key" style="color: #01B1E1"></i></a>';
 						$planclase = '<a class="btn btn-danger btn-expand" disabled style="color: white; background-color: #2A2A2A" title="Debes tener activo a  '.$persona->Nombre.' '.$persona->Apellidos.' para poder gestionar sus planes de clase." ><i class="fa fa-credit-card"></i></a>';
+						$responsable = '<a class="btn btn-danger btn-expand" disabled style="color: white; background-color: #2A2A2A" title="Debes tener activo a  '.$persona->Nombre.' '.$persona->Apellidos.' para poder gestionar sus responsables." ><i class="fa fa-users"></i></a>';
 						$estadoA = ' disabled ';
 						$estadoI = ' disabled ';
 						$estadoJ = ' disabled ';
