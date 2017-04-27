@@ -7,6 +7,16 @@ class Mdl_login extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load_configuracion();
+	}
+
+	private function load_configuracion()
+	{
+		$this->db->select('Correo');
+		$this->db->from('rtspersona_deb');
+		$this->db->where('IdPersona', 1);
+
+		$this->session->set_userdata('correo_generico',$this->db->get()->row()->Correo);
 	}
 
 	public function validarUsuario($data)
@@ -45,11 +55,6 @@ class Mdl_login extends CI_Model {
 				$this->session->set_userdata('usuario_activo',$this->session->userdata('session_id'));
 				$this->session->set_userdata('usuario_id',$login->IdPersona);
 
-				$this->db->select('Correo');
-				$this->db->from('rtspersona_deb');
-				$this->db->where('IdPersona', 1);
-
-				$this->session->set_userdata('correo_generico',$this->db->get()->row()->Correo);
 				return true;
 			} else {
 				return false;

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['base_url'] = 'http://rtservices.xyz';
+$config['base_url'] = 'http://rtservices.xyz/rtservices';
 
 $config['index_page'] = '';
 

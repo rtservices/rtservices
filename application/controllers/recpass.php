@@ -74,12 +74,12 @@ class Recpass extends CI_Controller {
 								<div class='col-md-2 col-sm-2 col-xs-2'><br></div>
 								<div class='col-md-8 col-sm-8 col-xs-8'>
 									<div style='padding: 20px; border-radius: 27px 27px 27px 27px;	-moz-border-radius: 27px 27px 27px 27px; -webkit-border-radius: 27px 27px 27px 27px; border: 18px ridge rgba(150,150,150,0.8); background: rgba(255,255,255,0.7);'>
-										<center><img src='http://rtservicesv-nman.rhcloud.com/assets/img/logo-vertical.png'></center>
+										<center><img src='".base_url()."/assets/img/logo-vertical.png'></center>
 										<br>
 										<center><h2 style='font-size: 25pt;'>Recuperación de contraseña - RTSERVICES</h2></center>
 										<center><p style='font-size: 18pt;'>Recientemente has solicitado un cambio de contraseña, por lo cual te enviamos este correo para que puedas validar y recuperar tu cuenta.</p></center>
 										<br>
-										<center><a href='http://rtservicesv-nman.rhcloud.com/recpass?idpl=".$idLogin."&token=".$tokengen."' target='_blank'><button class='btn btn-success'>Ir a arreglar mi cuenta.</button></a></center>
+										<center><a href='".base_url()."/recpass?idpl=".$idLogin."&token=".$tokengen."' target='_blank'><button class='btn btn-success'>Ir a arreglar mi cuenta.</button></a></center>
 									</div>
 								</div>
 								<div class='col-md-2 col-sm-2 col-xs-2'><br></div>
