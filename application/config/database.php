@@ -5,10 +5,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
-	'password' => '123',
-	'database' => 'rtsapp',
+	'hostname' => 'mysql.hostinger.com',
+	'username' => 'u587039146_rts',
+	'password' => 'rtsapp',
+	'database' => 'u587039146_rts',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
