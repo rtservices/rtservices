@@ -29,6 +29,9 @@ class Persona extends CI_Controller {
 
 			$data = array();
 			$arrol = array();
+			$responsable = "";
+			$cuenta = "";
+			$planclase = "";
 
 			if ($this->session->userdata('ssRol') == 'Administrador')
 			{
