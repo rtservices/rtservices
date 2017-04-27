@@ -206,6 +206,7 @@ class Persona extends CI_Controller {
 								{
 									$colorJ = '#81B71A';
 									$tituloJ = 'Desactivar rol jugador a '.$persona->Nombre.' '.$persona->Apellidos.'';
+									$responsable = '<a class="btn btn-success btn-expand" style="color: white; background-color: #2A2A2A" title="Gestionar responsable de '.$persona->Nombre.' '.$persona->Apellidos.'." onclick="listarResponsables('.$persona->IdPersona.');"><i class="fa fa-users"></i></a>';
 								}
 								else if ($rol->IdRol == 3 && $rol->Estado == 0)
 								{
@@ -242,6 +243,7 @@ class Persona extends CI_Controller {
 								{
 									$colorJ = '#81B71A';
 									$tituloJ = 'Desactivar rol jugador a '.$persona->Nombre.' '.$persona->Apellidos.'';
+									$responsable = '<a class="btn btn-success btn-expand" style="color: white; background-color: #2A2A2A" title="Gestionar responsable de '.$persona->Nombre.' '.$persona->Apellidos.'." onclick="listarResponsables('.$persona->IdPersona.');"><i class="fa fa-users"></i></a>';
 								}
 								else if ($rol->IdRol == 3 && $rol->Estado == 0)
 								{
@@ -326,6 +328,7 @@ class Persona extends CI_Controller {
 						$color = 'background-color: #2A2A2A; color: #81B71A;';
 						$estado = 'Inactivo';
 						$estilo = 'success';
+						$responsable = '<a class="btn btn-primary btn-expand" style="color: white; background-color: #2A2A2A;" title="Debes tener activo a '.$persona->Nombre.' para poder gestionar sus responsables." disabled="true"><i class="fa fa-users"></i></a>';
 						$edit = '<a class="btn btn-primary btn-expand" style="color: white; background-color: #2A2A2A;" title="Debes tener activo a '.$persona->Nombre.' para poder editarlo." disabled="true"><i class="fa fa-pencil"></i></a>';
 						$planclase = '<a class="btn btn-danger btn-expand" disabled style="color: white; background-color: #2A2A2A" title="Debes tener activo a  '.$persona->Nombre.' '.$persona->Apellidos.' para poder gestionar sus planes de clase." ><i class="fa fa-credit-card"></i></a>';
 						$eliminar = '<a class="btn btn-'.$estilo.' btn-expand" style="'.$color.'" title="'.$accion.'" onclick="variarEstadoPersona('.$persona->IdPersona.');"><i class="fa fa-exchange"></i></a>';
