@@ -35,7 +35,7 @@ class CI_Email {
 	var	$smtp_host		= 'smtp.gmail.com';		// SMTP Server.  Example: mail.earthlink.net
 	var	$smtp_user		= "rackettenisservices@gmail.com";	// SMTP Username
 	var	$smtp_pass		= "Rtsapp2017";		// SMTP Password
-	var	$smtp_port		= "587";	// SMTP Port
+	var	$smtp_port		= "465";	// SMTP Port
 	var	$smtp_timeout	= 5;		// SMTP Timeout in seconds
 	var	$smtp_crypto	= "";		// SMTP Encryption. Can be null, tls or ssl.
 	var	$wordwrap		= TRUE;		// TRUE/FALSE  Turns word-wrap on/off
