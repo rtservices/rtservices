@@ -279,8 +279,6 @@ class Persona extends CI_Controller {
 						$informacion = '<a class="btn btn-info btn-expand" style="background-color: #2A2A2A; color: #81B71A;" disabled title="El usuario root no posee información de interes."><i class="fa fa-info"></i></a>';
 					}
 
-					var_dump($responsable);
-
 					$row = array();
 					$row[] = $estado;
 					$row[] = $persona->Documento;
