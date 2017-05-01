@@ -48,13 +48,7 @@ class Mdl_planclase extends CI_Model {
 
 	public function pcActivos($iIdJugador)
 	{
-		$this->db->select('COUNT(*) AS conteo');
-		$this->db->from($this->tabla);
-		$this->db->where('IdPersonaRol_det', $iIdJugador);
-		$this->db->where('Estado', 1);
-		$this->db->or_where('Estado', 2);
-		$res = $this->db->get()->row();
-
+		$res = $this->db->query("SELECT COUNT(*) AS conteo FROM (SELECT * FROM $this->tabla WHERE IdPersonaRol_det = '$iIdJugador') as rts_planclase WHERE rts_planclase.Estado = '1' OR rts_planclase.Estado = '2'")->row();
 		return $res->conteo;
 	}
 

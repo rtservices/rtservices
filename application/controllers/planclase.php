@@ -102,29 +102,28 @@ class Planclase extends CI_Controller {
 			$sTipoPlan = $this->input->post('tipoPlan');
 			$iIdJugador = $this->input->post('idJugador');
 
-			// if ($sTipoPlan != 'noselect')
-			// {
-				echo $this->mdl_planclase->pcActivos($iIdJugador);
-				// $data = array(
-				// 	'FechaInicio' => date('Y-m-d'),
-				// 	'DiasRestantes' => ($sTipoPlan * 8),
-				// 	'Estado' => (($this->mdl_planclase->pcActivos($iIdJugador) > 1) ? 2 : 1),
-				// 	'IdPersonaRol_det' => $iIdJugador
-				// 	);
+			if ($sTipoPlan != 'noselect')
+			{
+				$data = array(
+					'FechaInicio' => date('Y-m-d'),
+					'DiasRestantes' => ($sTipoPlan * 8),
+					'Estado' => (($this->mdl_planclase->pcActivos($iIdJugador) >= 1) ? 2 : 1),
+					'IdPersonaRol_det' => $iIdJugador
+					);
 
-			// 	if ($this->mdl_planclase->addPlanClaseJugador($data))
-			// 	{
-			// 		echo "ok";
-			// 	}
-			// 	else
-			// 	{
-			// 		echo "no";
-			// 	}
-			// }
-			// else
-			// {
-			// 	echo "cvacio";
-			// }
+				if ($this->mdl_planclase->addPlanClaseJugador($data))
+				{
+					echo "ok";
+				}
+				else
+				{
+					echo "no";
+				}
+			}
+			else
+			{
+				echo "cvacio";
+			}
 		}
 		else
 		{
