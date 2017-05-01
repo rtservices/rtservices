@@ -1,4 +1,4 @@
-<script type="text/javascript" src="ajax/ajxClase.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>ajax/ajxClase.js"></script>
 <script type="text/javascript">
 	$('.clockpicker').clockpicker({
 		align: 'right',

@@ -10,6 +10,7 @@ class Ejecucion extends CI_Controller {
 		parent::__construct();
 		$this->load->model('mdl_asistencia');
 		$this->load->model('mdl_clase');
+		$this->load->model('mdl_persona');
 	}
 
 	public function index()
@@ -20,8 +21,12 @@ class Ejecucion extends CI_Controller {
 		}
 		if ($this->input->get('idclase'))
 		{
+			$id_clase = $this->input->get('idclase');
 			$data['titulo'] = 'Control de clases';
-			$data['idclase'] = $this->input->get('idclase');
+			$data['idclase'] = $id_clase;
+			$clase_info = $this->mdl_clase->listarClase($id_clase)->row();
+			$data['clase'] = $clase_info;
+			$data['instructor'] = $this->mdl_persona->listarIdJugador($clase_info->IdPersonaRol_det)->row();
 			$this->load->view('msp/cabecera', $data);
 			$this->load->view('ejecucion/ejecucion', $data);
 			$this->load->view('msp/footer');
@@ -29,7 +34,7 @@ class Ejecucion extends CI_Controller {
 		}
 		else
 		{
-			redirect('clase/');
+			redirect('clase/seleccionplay');
 		}
 
 	}
@@ -41,19 +46,13 @@ class Ejecucion extends CI_Controller {
 			$data = array();
 			foreach ($this->mdl_asistencia->cargarTabla($iIdClase) as $asistencia)
 			{
-				if ($asistencia->Estado == 1) 
-				{
-					$accion = 'Inhabilitar asistencia';
+				if ($asistencia->Estado == 1) {
 					$color = ' color: #F13A3A; background-color: #2A2A2A;';
 					$estilo = 'danger';
 					$estado = '<a style="color: #31B404">Activo</a>';
 					$edit = '<a class="btn btn-primary btn-expand" style="color:white; background-color: #2A2A2A;" href="" title="Administrar asistencia"><i class="fa fa-pencil"></i></a>';
 					
-				}
-
-				else
-				{
-					$accion = 'Habilitar asistencia';
+				} else {
 					$color = 'color:#81B71A; background-color: #2A2A2A;';
 					$estilo = 'success';
 					$estado = '<a style="color: #8A0808">Inactivo</a>';
@@ -70,7 +69,6 @@ class Ejecucion extends CI_Controller {
 				<center>
 					<a class="btn btn-info btn-expand" style="color:white; background-color: #2A2A2A;"   title="Más información" onclick="listarClases('.$asistencia->IdAsistencia.')"><i class="fa fa-info-circle"></i></a>
 					'.$edit.'
-					<a class="btn btn-'.$estilo.' btn-expand" style="'.$color.'"   title="'.$accion.'" onclick="variarEstadoAsistencia('.$asistencia->IdAsistencia.')"><i class="fa fa-exchange"></i></a>
 				</center>';
 
 				$data[] = $row;

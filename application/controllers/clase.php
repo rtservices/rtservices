@@ -15,12 +15,12 @@ class Clase extends CI_Controller {
 
 	public function index()
 	{
+		$data['tipo_sel'] = false;
 		if (!$this->session->userdata('usuario_id')) 
 		{
 			redirect('login');
 		}
 		if (is_null($this->idClaseActual_principal)) {
-			$data['cpersona'] = $this->mdl_login->cargarUsuario();
 			$data['titulo'] = 'Gestión de Clases';
 			$this->load->view('msp/cabecera', $data);
 			$this->load->view('clase/clase');
@@ -48,12 +48,27 @@ class Clase extends CI_Controller {
 		}
 	}
 
+	public function seleccionplay()
+	{
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
+		$data['titulo'] = 'Selección de clase';
+		$data['tipo_sel'] = true;
+		$this->load->view('msp/cabecera', $data);
+		$this->load->view('clase/clase', $data);
+		$this->load->view('msp/footer');
+		$this->load->view('clase/add');
+	}
+
 	public function programacion($idclase = null)
 	{
+		$data['tipo_sel'] = false;
+		$this->load->view('msp/cabecera', $data);
 		if (is_null($idclase))
 		{
 			$data['titulo'] = 'Programación de Clases';
-			$this->load->view('msp/cabecera', $data);
 			$this->load->view('programacion/programacion');
 			$this->load->view('msp/footer');
 			$this->load->view('programacion/add');
@@ -62,7 +77,6 @@ class Clase extends CI_Controller {
 		{
 			$clase = 
 			$data['titulo'] = 'Programación de Clases';
-			$this->load->view('msp/cabecera', $data);
 			$this->load->view('programacion/programacion_u');
 			$this->load->view('msp/footer');
 			$this->load->view('programacion/add_u');
@@ -124,6 +138,54 @@ class Clase extends CI_Controller {
 					'.$edit.'
 					'.$mateclas.'
 					<a class="btn btn-'.$estilo.' btn-expand" style="'.$color.'"   title="'.$accion.'" onclick="variarEstadoClase('.$clase->IdClase.')"><i class="fa fa-exchange"></i></a>
+				</center>';
+
+				$data[] = $row;
+			}
+			$output = array("data" => $data);
+
+			echo json_encode($output);
+		} else 
+		{
+			redirect('error404');
+		}
+	}
+
+	public function cargarTabla_sel()
+	{
+		if ($this->input->is_ajax_request())
+		{
+			$data = array();
+			foreach ($this->mdl_clase->cargarTabla() as $clase)
+			{
+				if ($clase->Estado == 0) 
+				{
+					continue;
+				}
+
+				if ($clase->cantidad_jugadores < 10)
+				{
+					$colorCJ = 'color: #31B404';
+				}
+				else if ($clase->cantidad_jugadores >= 10 && $clase->cantidad_jugadores < 14)
+				{
+					$colorCJ = 'color: #DBA901';
+				}
+				else if ($clase->cantidad_jugadores >= 14)
+				{
+					$colorCJ = 'color: #FE2E2E';
+				}
+				
+				
+				$row = array();
+				$row[] = $clase->NombreClase;
+				$row[] = $clase->Dia.' - '.$clase->HoraInicio .' a '.$clase->HoraFinal;
+				$row[] = 'Jugadores inscritos <a style="'. $colorCJ .'">[ '.$clase->cantidad_jugadores.' ] </a>';
+				$row[] = 'DNI '.$clase->Documento.' - '.$clase->Nombre.' '.$clase->Apellidos;
+
+				$row[] = '
+				<center>
+					<a href="../ejecucion?idclase='.$clase->IdClase.'" class="btn btn-success btn-expand" style="color:#81B71A; background-color: #2A2A2A;"   title="Seleccionar clase"><i class="fa fa-check"></i></a>
 				</center>';
 
 				$data[] = $row;

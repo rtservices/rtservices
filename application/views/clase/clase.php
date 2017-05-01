@@ -1,5 +1,5 @@
 <div class="header-content">
-	<h2><i class="fa fa-list-alt"></i> Gestión de Clases</h2>
+	<h2><i class="fa fa-list-alt"></i> <?= $titulo ?></h2>
 	<div class="breadcrumb-wrapper hidden-xs">
 		<span class="label">Estas en:</span>
 		<ol class="breadcrumb">
@@ -14,18 +14,20 @@
 </div>
 
 <div class="body-content animated fadeIn">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel rounded shadow no-overflow">
-				<center>
-					<div class="panel-heading btn btn-success btn-push" style="margin: 20px" onclick="nuevaC()">
-						<a style="text-decoration:none; color:white;"><h3 class="panel-title">Registrar Clases </h3></a>
-						<div class="clearfix"></div>
-					</div>
-				</center>
+	<?php if (!$tipo_sel) { ?>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel rounded shadow no-overflow">
+					<center>
+						<div class="panel-heading btn btn-success btn-push" style="margin: 20px" onclick="nuevaC()">
+							<a style="text-decoration:none; color:white;"><h3 class="panel-title">Registrar Clases </h3></a>
+							<div class="clearfix"></div>
+						</div>
+					</center>
+				</div>
 			</div>
 		</div>
-	</div>
+	<?php } ?>
 
 
 	<div class="row">
@@ -45,7 +47,9 @@
 						<table id="tablaClase" class="table table-hover">
 							<thead>
 								<tr>
-									<td>-</td>
+									<?php if (!$tipo_sel) { ?>
+										<td>-</td>
+									<?php } ?>
 									<td style="color: red;">Nombre clase</td>
 									<td>Horario</td>
 									<td>Cantidad jugadores</td>
@@ -140,3 +144,11 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	<?php if (!$tipo_sel) { ?>
+		var var_url = "<?= base_url() ?>clase/cargarTabla";
+	<?php } else { ?>
+		var var_url = "<?= base_url() ?>clase/cargarTabla_sel";
+	<?php } ?>
+	console.log(var_url);
+</script>

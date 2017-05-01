@@ -1,5 +1,5 @@
 <div class="header-content">
-	<h2><i class="fa fa-list-alt"></i> Control de clases y asistencias</h2>
+	<h2><i class="fa fa-list-alt"></i> Ejecución de clases y asistencias</h2>
 	<div class="breadcrumb-wrapper hidden-xs">
 		<span class="label">Estas en:</span>
 		<ol class="breadcrumb">
@@ -13,28 +13,37 @@
 				<a href="<?= base_url() ?>clase">Clases</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
-			<li class="active">Control de clases y asistencias</li>
+			<li class="active"> Ejecución de clases y asistencias</li>
 		</ol>
 	</div>
 </div>
 
 <div class="body-content animated fadeIn">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 			<div class="panel rounded shadow no-overflow">
 				<div class="panel-heading">
 					<center>
-						<a href="clase"><button type="button" class="btn btn-success btn-expand" style="background-color: #2A2A2A;">Regresar a gestión de clases</button></a>
+						<strong style="font-size: 18px;">Información de la clase</strong>
 					</center>
+					<ul style="list-style-type: none;">
+						<li><strong>Nombre de clase:</strong> <?= $clase->NombreClase ?></li>
+						<li><strong>Día:</strong> <?= $clase->Dia ?></li>
+						<li><strong>Hora de inicio:</strong> <?= $clase->HoraInicio ?></li>
+						<li><strong>Hora de fin:</strong> <?= $clase->HoraFinal ?></li>
+						<li><strong>Instructor:</strong> DNI <?= $instructor->Documento.' - '.$instructor->Nombre.' '.$instructor->Apellidos ?></li>
+					</ul>
 				</div>
 			</div>
 		</div>
+		<div class="col-md-2"></div>
 		<input type="hidden" name="IdClase" id="IdClase" value="<?= $idclase ?>">
 		<div class="col-md-12">
 			<div class="panel rounded shadow no-overflow">
 				<center>
 					<div class="panel-heading btn btn-success btn-push" style="margin: 20px" onclick="nuevaAsistencia()">
-						<a style="text-decoration:none; color:white;"><h3 class="panel-title">Registrar Asistencia </h3></a>
+						<a style="text-decoration:none; color:white;"><h3 class="panel-title">Registrar ejecución </h3></a>
 						<div class="clearfix"></div>
 					</div>
 				</center>
@@ -83,7 +92,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><center>Registro de asistencias</center></h4>
+				<h4 class="modal-title" id="myModalLabel"><center>Registro de ejecución y asistencias</center></h4>
 			</div>
 			<form id="formAsistencia">
 				<div class="modal-body">

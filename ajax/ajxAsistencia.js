@@ -1,7 +1,7 @@
 var tablaAsistencia;
 $(document).ready(function() {
 	NProgress.start();
-	tablaAsistencia = $('#tablaAsistencia').DataTable({ "ajax":"asistencia/cargarTabla/" + $('#IdClase').val() });
+	tablaAsistencia = $('#tablaAsistencia').DataTable({ "ajax":"ejecucion/cargarTabla/" + $('#IdClase').val() });
 }); 
 
 $(window).load(function() {
@@ -23,14 +23,14 @@ $('#formAsistencia').submit(function(event) {
 	event.preventDefault();
 	
 	$.ajax({
-		url: 'asistencia/regitrarasistencia',
+		url: 'ejecucion/regitrarasistencia',
 		type: 'POST',
 		data: $('#formAsistencia').serialize(),
 		success:function(res)
 		{
 			if (res != 'no')
 			{
-				location.href = 'asistencia?ida=' + res;
+				location.href = 'ejecucion?ida=' + res;
 			}
 			else
 			{
@@ -54,7 +54,7 @@ function variarEstadoAsistencia(id)
 	}).then(function() {
 		NProgress.start();
 		$.ajax({
-			url: "asistencia/variarEstadoAsistencia",
+			url: "ejecucion/variarEstadoAsistencia",
 			type: "POST",
 			data: { id: id },
 			success: function(res) {

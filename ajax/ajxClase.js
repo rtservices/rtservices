@@ -2,7 +2,7 @@ var tablaPrincipalClase;
 var tablaClase;
 $(document).ready(function() {
 	NProgress.start();
-	tablaPrincipalClase = $('#tablaClase').DataTable({ "ajax":"clase/cargarTabla" });
+	tablaPrincipalClase = $('#tablaClase').DataTable({ "ajax":var_url });
 }); 
 
 $(window).load(function() {
