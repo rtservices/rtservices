@@ -5,6 +5,10 @@ class Recpass extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 	}
 
 	//token = Token generado por el sistema para el usuario.

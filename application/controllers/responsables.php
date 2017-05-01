@@ -5,6 +5,10 @@ class Responsables extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		$this->load->model('mdl_persona');
 	}
 
@@ -15,11 +19,6 @@ class Responsables extends CI_Controller {
 		{
 			redirect('persona');
 		}
-		else if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
-
 		$oJugador = $this->mdl_persona->listarJugador_planclase($iIdJugador);
 		if ($oJugador)
 		{

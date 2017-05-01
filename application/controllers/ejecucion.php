@@ -8,18 +8,17 @@ class Ejecucion extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		$this->load->model('mdl_asistencia');
 		$this->load->model('mdl_clase');
 	}
 
 	public function index()
 	{
-		if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
-
-		if (!is_null($this->input->get('idclase')))
+		if ($this->input->get('idclase'))
 		{
 			$data['titulo'] = 'Control de clases';
 			$data['idclase'] = $this->input->get('idclase');
@@ -30,7 +29,7 @@ class Ejecucion extends CI_Controller {
 		}
 		else
 		{
-			redirect('clase');
+			redirect('clase/');
 		}
 
 	}

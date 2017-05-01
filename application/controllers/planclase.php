@@ -5,6 +5,10 @@ class Planclase extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		$this->load->model('mdl_planclase');
 	}
 
@@ -15,11 +19,6 @@ class Planclase extends CI_Controller {
 
 	public function index()
 	{
-		if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
-
 		$iIdPC = $this->input->get('idPc');
 		if ($iIdPC)
 		{

@@ -50,6 +50,11 @@ class CI_Controller {
 		$this->load =& load_class('Loader', 'core');
 
 		$this->load->initialize();
+
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		
 		log_message('debug', "Controller Class Initialized");
 	}

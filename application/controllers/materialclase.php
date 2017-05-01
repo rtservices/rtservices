@@ -7,6 +7,10 @@ class Materialclase extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		$this->load->model('mdl_material');
 		
 	}
@@ -14,12 +18,6 @@ class Materialclase extends CI_Controller {
 	public function index()
 	{
 		$iIdclase = $this->input->get('idclase');
-		if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
-       
-        
 		$data['cpersona'] = $this->mdl_login->cargarUsuario();
 		foreach ($this->mdl_material->cargarClase_id($iIdclase) as $infoClase) 
 			{

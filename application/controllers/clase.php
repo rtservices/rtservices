@@ -9,36 +9,27 @@ class Clase extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-		if (!$this->input->is_ajax_request()) {
-			if (!$this->session->userdata('usuario_id')) 
-			{
-				redirect('login');
-			}
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
 		}
-
 		$this->load->model('mdl_clase');
 		$this->idClaseActual_principal = ($this->input->get('clase')) ? $this->input->get('clase') : null;
 	}
 
 	public function index()
 	{
-		if (is_null($this->idClaseActual_principal))
-		{
+		if (is_null($this->idClaseActual_principal)) {
 			$data['cpersona'] = $this->mdl_login->cargarUsuario();
 			$data['titulo'] = 'Gestión de Clases';
 			$this->load->view('msp/cabecera', $data);
 			$this->load->view('clase/clase');
 			$this->load->view('msp/footer');
 			$this->load->view('clase/add');
-		}
-
-		else
-		{
+		} else {
 			$data['idClase'] = $this->idClaseActual_principal;
 			$data['cpersona'] = $this->mdl_login->cargarUsuario();
-			foreach ($this->mdl_clase->cargarClase_id($this->idClaseActual_principal) as $infoClase) 
-			{
+			foreach ($this->mdl_clase->cargarClase_id($this->idClaseActual_principal) as $infoClase) {
 				$data['titulo'] = 'Gestión de Clases - ' . $infoClase->NombreClase; 
 				$data['nombreClase'] = $infoClase->NombreClase . ' - ' . $infoClase->Dia; 
 				$data['idClase'] = $infoClase->IdClase;

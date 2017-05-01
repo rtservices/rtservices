@@ -24,7 +24,7 @@ class Mdl_persona extends CI_Model {
 		}
 		else
 		{
-			$query = $this->db->query("SELECT vistaJugadores.* FROM vistaJugadores");
+			$query = $this->db->query("SELECT * FROM vistajugadores");
 			return $query->result();
 		}
 	}

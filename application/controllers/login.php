@@ -5,15 +5,15 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('usuario_id')) 
+		{
+			redirect('menu');
+		}
 		$this->load->model('mdl_login');
 	}
 
 	public function index()
 	{
-		if ($this->session->userdata('usuario_id')) 
-		{
-			redirect('menu');
-		}
 		$this->load->view('login/login');
 	}
 
