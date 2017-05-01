@@ -146,6 +146,43 @@ class Clase extends CI_Controller {
 		}
 	}
 
+	public function todasClases()
+	{
+		if ($this->input->is_ajax_request())
+		{
+			$data = array();
+			foreach ($this->mdl_clase->cargarTabla() as $clase)
+			{
+				if ($clase->cantidad_jugadores < 10)
+				{
+					$colorCJ = 'color: #31B404';
+				}
+				else if ($clase->cantidad_jugadores >= 10 && $clase->cantidad_jugadores < 14)
+				{
+					$colorCJ = 'color: #DBA901';
+				}
+				else if ($clase->cantidad_jugadores >= 14)
+				{
+					$colorCJ = 'color: #FE2E2E';
+				}
+				
+				
+				$row = array();
+				$row[] = $clase->NombreClase;
+				$row[] = $clase->Dia.' - '.$clase->HoraInicio .' a '.$clase->HoraFinal;
+				$row[] = 'Jugadores inscritos <a style="'. $colorCJ .'">[ '.$clase->cantidad_jugadores.' ] </a>';
+
+				$data[] = $row;
+			}
+			$output = array("data" => $data);
+
+			echo json_encode($output);
+		} else 
+		{
+			redirect('error404');
+		}
+	}
+
 	public function cargarTablaJC($idTablaJugadorClase)
 	{
 		if ($this->input->is_ajax_request())

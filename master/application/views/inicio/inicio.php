@@ -376,7 +376,7 @@
                   setTimeout(function() {
                     $('#loadingCI').hide();
                     $('#listoCI').show();
-                    $('#tablaClaseInfo').DataTable({ "ajax": "<?= base_url() ?>clase/cargarClaseInfo", "destroy": true });
+                    $('#tablaClaseInfo').DataTable({ "ajax": "<?= base_url() ?>clase/todasClases", "destroy": true });
                   }, 2000);
                 };
               </script>
