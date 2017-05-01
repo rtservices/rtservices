@@ -6,15 +6,15 @@ class Material extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
 		$this->load->model('mdl_material');
 	}
 
 	public function index()
 	{
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		$data['cpersona'] = $this->mdl_login->cargarUsuario();
 		$data['titulo'] = 'Gestion de Materiales';
 		$this->load->view('msp/cabecera', $data);

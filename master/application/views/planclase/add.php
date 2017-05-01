@@ -1,1 +1,0 @@
-<script type="text/javascript" src="ajax/ajxPClase.js"></script>

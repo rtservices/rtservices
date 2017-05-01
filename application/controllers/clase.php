@@ -9,16 +9,16 @@ class Clase extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->session->userdata('usuario_id')) 
-		{
-			redirect('login');
-		}
 		$this->load->model('mdl_clase');
 		$this->idClaseActual_principal = ($this->input->get('clase')) ? $this->input->get('clase') : null;
 	}
 
 	public function index()
 	{
+		if (!$this->session->userdata('usuario_id')) 
+		{
+			redirect('login');
+		}
 		if (is_null($this->idClaseActual_principal)) {
 			$data['cpersona'] = $this->mdl_login->cargarUsuario();
 			$data['titulo'] = 'Gestión de Clases';
