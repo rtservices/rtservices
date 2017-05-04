@@ -12,7 +12,7 @@ class Mdl_asistencia extends CI_Model {
 
 	public function cargarTabla($iIdClase)
 	{
-		$this->db->select('rtsasistencia_deb.IdAsistencia, rtsclase_deb.NombreClase, rtsasistencia_deb.FechaRegistro, rtsclase_deb.HoraInicio, rtsclase_deb.HoraFinal, rtsclase_deb.Dia, rtsasistencia_deb.Estado');
+		$this->db->select('rtsasistencia_deb.IdAsistencia, rtsclase_deb.NombreClase, rtsasistencia_deb.Codigo, rtsasistencia_deb.FechaRegistro, rtsclase_deb.HoraInicio, rtsclase_deb.HoraFinal, rtsclase_deb.Dia, rtsasistencia_deb.Estado');
 		$this->db->from($this->tabla);
 		$this->db->join('rtsclase_deb','rtsasistencia_deb.IdClase_deb = rtsclase_deb.IdClase','INNER');
 		$this->db->where('rtsclase_deb.IdClase', $iIdClase);

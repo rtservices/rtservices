@@ -17,6 +17,29 @@ function actualizar()
 function nuevaAsistencia()
 {
 	$('#modalAsistencia').modal('show');
+	$.ajax({
+		url: 'ejecucion/cargarJugadores/'+$('#IdClase').val(),
+		type: 'GET',
+		dataType: 'JSON',
+	}).done(function(res) {
+		$.each(res, function(index, val) {
+			var estilo = '';
+			var opcion = '';
+			var titulo = '';
+			if (val.DiasRestantes > 15) {
+				estilo = 'list-group-item-success';
+			} else if (val.DiasRestantes < 15 && val.DiasRestantes > 8) {
+				estilo = 'list-group-item-warning';
+			} else {
+				estilo = 'list-group-item-danger';
+				titulo = 'Cuenta con muy pocos dias restantes en el plan de clase.';
+			}
+			$('.jugadores_asig_clas').append('<li class="list-group-item '+estilo+'"><div class="input-group" '+titulo+'><span class="input-group-addon"><input type="checkbox" name="check_jugador" id="check_jugador_'+val.IdClasejugador+'" aria-label="..."></span><input type="text" readonly class="form-control" value="DNI '+val.Documento+' - '+val.Nombre+' '+val.Apellidos+'" style="background-color: white !important; color: #636E7B !important;" aria-label="..."></div></li>');
+		});
+	})
+	.fail(function() {
+		console.log("error");
+	});
 }
 
 $('#formAsistencia').submit(function(event) {

@@ -57,7 +57,7 @@
 			<div class="panel rounded shadow no-overflow">
 				<div class="panel-heading">
 					<div class="pull-left">
-						<h3 class="panel-title">Asistencias en clases</h3>
+						<h3 class="panel-title">Ejecuciones y asistencias</h3>
 					</div>
 					<div class="pull-right">
 						<button class="btn btn-sm" data-container="body" data-action="collapse" data-toggle="tooltip" data-placement="top" data-title="Collapse" data-original-title="" title=""><i class="fa fa-angle-up"></i></button>
@@ -69,15 +69,11 @@
 						<table id="tablaAsistencia" class="table table-hover">
 							<thead>
 								<tr>
-									<td>-</td>
-									<td style="color: red;">Fecha de asistencia</td>
-									<td>Nombre clase</td>
-									<td>Horario</td>
+									<td >Código</td>
+									<td style="color: red;">Fecha de ejecución</td>
 									<td style="text-align: center;">Acciones</td>
 								</tr>
 							</thead>
-							<tbody>
-							</tbody>
 						</table>
 					</div>
 					<br>
@@ -101,13 +97,9 @@
 						<div class="col-md-10">
 							<div class="row">
 								<div class="col-md-6 form-group">
-									<label class="control-label">Seleccione una clase <span style="color: red;">*</span></label>
-									<select id="clase" name="clase" data-placeholder="Seleccione una eps" class="chosen-select mb-15" tabindex="-1" style="display: none;">
-										<option value="" disabled selected>Seleccione una clase</option>';
-										<?php foreach ($this->mdl_clase->listarClasesSelect() as $clases) { ?>
-										<option value="<?= $clases->IdClase ?>"><?= $clases->NombreClase . ' - ' . $clases->Dia . ' | ' . $clases->HoraInicio . ' a ' . $clases->HoraFinal ?></option>';
-										<?php }?>
-									</select>
+									<label class="control-label">Código <span style="color: red;">*</span></label>
+									<input type="text" class="form-control" name="codigo_asistencia" id="codigo_asistencia" value="AST0">
+									<small>Se puede generara automaticamente.</small>
 								</div>
 								<div class="col-md-6 form-group">
 									<label class="control-label">Fecha de ejecución <span style="color: red;">*</span></label>
@@ -116,8 +108,18 @@
 							</div>
 							<div class="divider"></div>
 						</div>
-						<div class="col-md-1"></div>
-						<div class="col-md-1"></div>
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10 col-md-offset-1">
+								<center>
+									<h3>Jugadores asignados a clase</h3>
+									<small>Marca solo los que asistieron a clase.</small>
+									<ul class="list-group center jugadores_asig_clas">
+									</ul>
+								</center>
+							</div>
+							<div class="col-md-1"></div>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
